@@ -1,10 +1,17 @@
 function camelcase(s) {
     if(!s.trim()) return 0
- 
+    
+    var isUpperCase = function(str, counter) {
+       return str.charCodeAt(counter) > 64 && str.charCodeAt(counter) < 91
+    }
+
     var words = 0;
     var counter = 0;
     while(counter < s.length){
-      if(s.charCodeAt(counter) > 64 && s.charCodeAt(counter) < 91) {
+      if(isUpperCase(s, counter)) {
+        if(counter === 0) {
+            return words;
+        }
         ++words;
       }
       ++counter;
@@ -12,4 +19,4 @@ function camelcase(s) {
     return words + 1;
 }
 
-console.log(camelcase('checkResult'));
+console.log(camelcase('sult'));
